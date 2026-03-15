@@ -1,198 +1,302 @@
-# Local LLM Manager
+# 🧠 Local LLM Manager & Eval Harness
 
-An intelligent hardware-aware tool for managing local LLMs via Ollama.
+> **Hardware-aware LLM management + evaluation harness for local models via Ollama.**
+> Run TruthfulQA & MMLU benchmarks, compare quantized vs full-precision models, and generate rich benchmark reports — all from a single CLI.
 
-## Features
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
+![Ollama](https://img.shields.io/badge/backend-Ollama-orange)
 
-- **Hardware Detection** - Automatically detect GPU, CPU, and RAM specs
-- **Smart Model Recommendations** - Get model suggestions based on your hardware
-- **Benchmarking** - Test and track model performance on your machine
-- **One-click Install** - Pull models directly via Ollama
-- **Quantization Helper** - Auto-quantize models for optimal hardware usage
+---
 
-## Installation
+## ✨ Features
 
-```bash
-pip install local-llm-manager
+| Feature | Description |
+|---------|-------------|
+| 🖥️ **Hardware Detection** | Auto-detect GPU, CPU, RAM specs and determine what models your machine can run |
+| 🎯 **Smart Recommendations** | Get model suggestions ranked by hardware fit score |
+| 📊 **Eval Harness** | Run TruthfulQA (50 questions) & MMLU (80 questions across 4 domains) benchmarks locally |
+| ⚖️ **Quantized vs Full Comparison** | Compare accuracy, latency, and quality-efficiency tradeoffs between model variants |
+| 📈 **Rich Reports** | Generate dark-themed HTML, Markdown, and JSON benchmark reports |
+| 🏆 **Leaderboard** | Track and rank models across evaluations with sortable leaderboards |
+| ⚡ **Performance Benchmarks** | Measure tokens/sec, prompt eval rate, and load times |
+| 🔧 **Quantization Helper** | Auto-quantize models to optimal precision for your hardware |
+
+---
+
+## 🏗️ Architecture
+
+```
+local-llm-manager/
+├── src/local_llm_manager/
+│   ├── cli.py              # Click CLI — all commands
+│   ├── hardware.py         # GPU/CPU/RAM detection (NVIDIA + AMD)
+│   ├── recommendations.py  # Hardware-aware model recommendations
+│   ├── ollama_client.py    # Ollama REST API client
+│   ├── benchmark.py        # Performance benchmarking (tokens/sec)
+│   ├── quantize.py         # Quantization helper (q2_k → q8_0)
+│   ├── datasets.py         # TruthfulQA & MMLU dataset loaders
+│   ├── eval_harness.py     # Evaluation engine with MC answer extraction
+│   ├── comparison.py       # Model comparison & leaderboard
+│   ├── reports.py          # Markdown / HTML / JSON report generation
+│   ├── database.py         # SQLite persistence (benchmarks + eval results)
+│   └── data/
+│       ├── truthfulqa_subset.json   # 50 curated TruthfulQA questions
+│       └── mmlu_subset.json         # 80 curated MMLU questions
+└── pyproject.toml
 ```
 
-Or install from source:
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Python 3.11+**
+- **[Ollama](https://ollama.com)** installed and running (`ollama serve`)
+
+### Install
 
 ```bash
+# From source
 git clone https://github.com/arjun-arihant/local-llm-manager.git
 cd local-llm-manager
 pip install -e .
+
+# Or from PyPI (when published)
+pip install local-llm-manager
 ```
 
-## Prerequisites
+### First Run
 
-- Python 3.11+
-- [Ollama](https://ollama.com) installed and running
+```bash
+# 1. Detect hardware
+llm-manager detect
 
-## Usage
+# 2. Get model recommendations
+llm-manager recommend
 
-### Detect Hardware
+# 3. Install a model
+llm-manager install llama3.2
+
+# 4. Run evaluation
+llm-manager eval llama3.2 --dataset truthfulqa
+```
+
+---
+
+## 📖 Usage Guide
+
+### 🖥️ Detect Hardware
 
 ```bash
 llm-manager detect
 ```
 
-Shows your GPU, CPU, and RAM specifications.
-
 ```
 ╭────────────────────╮
 │ Hardware Detection │
 ╰────────────────────╯
-                            System Hardware                             
-┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Component ┃ Property      ┃ Value                                    ┃
-┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ CPU       │ Model         │ Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz │
-│ CPU       │ Cores/Threads │ 4/8                                      │
-│ CPU       │ Architecture  │ X86_64                                   │
-│ RAM       │ Total         │ 15.5 GB                                  │
-│ RAM       │ Available     │ 12.1 GB                                  │
-│ RAM       │ Used          │ 21.6%                                    │
-│ GPU       │ Model         │ NVIDIA GeForce GTX 1050 Ti               │
-│ GPU       │ VRAM          │ 6/4096 MB                                │
-│ GPU       │ Driver        │ 535.288.01                               │
-│ GPU       │ CUDA          │ Not available                            │
-└───────────┴───────────────┴──────────────────────────────────────────┘
+                            System Hardware
+┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Component ┃ Property      ┃ Value                                   ┃
+┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ GPU       │ Model         │ NVIDIA GeForce RTX 3060                 │
+│ GPU       │ VRAM          │ 12288 MB                                │
+│ CPU       │ Cores/Threads │ 8/16                                    │
+│ RAM       │ Total         │ 32.0 GB                                 │
+└───────────┴───────────────┴─────────────────────────────────────────┘
 ```
 
-### Get Model Recommendations
+### 📊 Evaluate a Model
 
 ```bash
+# Run on all datasets
+llm-manager eval llama3.2
+
+# Run on specific dataset with sample limit
+llm-manager eval llama3.2 --dataset mmlu --samples 20
+
+# Fine-grained control
+llm-manager eval mistral --dataset truthfulqa --samples 30 --seed 123
+```
+
+```
+╭────────────────────────────╮
+│ Evaluating: llama3.2       │
+╰────────────────────────────╯
+Dataset: TruthfulQA (50 questions)
+[50/50] ✓ Qtqa_050  ━━━━━━━━━━━━━━━━━━━━━━━━  100%
+✓ Evaluation saved to database
+
+         Results: llama3.2 on TruthfulQA
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Metric      ┃ Value           ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ Accuracy    │ 78.0% (39/50)   │
+│ Avg Latency │ 1234ms          │
+│ P50 Latency │ 1150ms          │
+│ P95 Latency │ 2100ms          │
+│ Total Time  │ 61.7s           │
+└─────────────┴─────────────────┘
+```
+
+### ⚖️ Compare Models (Quantized vs Full)
+
+```bash
+llm-manager compare llama3.2 llama3.2-q4_k_m --dataset mmlu --samples 20
+```
+
+```
+       Comparison: llama3.2 vs llama3.2-q4_k_m on MMLU
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Metric             ┃ llama3.2   ┃ llama3.2-q4_k_m┃ Delta   ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ Accuracy           │ 72.5%      │ 68.0%          │ -4.5%   │
+│ Avg Latency        │ 1500ms     │ 950ms          │ 1.58x   │
+│ P95 Latency        │ 2200ms     │ 1400ms         │ —       │
+│ Quality-Efficiency  │ —          │ —              │ 0.712   │
+└────────────────────┴────────────┴────────────────┴─────────┘
+```
+
+### 📈 Generate Reports
+
+```bash
+# Markdown report
+llm-manager report --format md --output eval_report.md
+
+# Dark-themed HTML report
+llm-manager report --format html --output eval_report.html
+
+# JSON export (for CI/CD)
+llm-manager report --format json --output results.json
+
+# Filter by model
+llm-manager report --model llama3.2 --format html --output llama_report.html
+```
+
+### 🏆 View Leaderboard
+
+```bash
+# Sort by accuracy (default)
+llm-manager leaderboard
+
+# Sort by latency or efficiency
+llm-manager leaderboard --sort latency
+llm-manager leaderboard --sort efficiency
+```
+
+```
+         🏆 Leaderboard (sorted by accuracy)
+┏━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Rank ┃ Model           ┃ Dataset    ┃ Accuracy ┃ Avg Latency  ┃
+┡━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ 🥇   │ mistral         │ TruthfulQA │ 82.0%    │ 1800ms       │
+│ 🥈   │ llama3.2        │ TruthfulQA │ 78.0%    │ 1234ms       │
+│ 🥉   │ llama3.2-q4_k_m │ TruthfulQA │ 74.0%    │ 850ms        │
+└──────┴─────────────────┴────────────┴──────────┴──────────────┘
+```
+
+### 📋 List Datasets
+
+```bash
+llm-manager datasets
+```
+
+### 🎯 Other Commands
+
+```bash
+# Get model recommendations for your hardware
 llm-manager recommend
-```
 
-Suggests models based on your detected hardware capabilities.
+# Install a model
+llm-manager install <model>
 
-```
-╭───────────────────────╮
-│ Model Recommendations │
-╰───────────────────────╯
-GPU: NVIDIA GeForce GTX 1050 Ti (4096MB VRAM)
-RAM: 15.5GB
-
-                      Recommended Models for Your Hardware                      
-┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━┓
-┃ Model      ┃ Description             ┃ Size   ┃ Requirements           ┃ Fit ┃
-┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━┩
-│ qwen2.5:3b │ Qwen2.5 3B - Alibaba's  │ 1.9 GB │ 2500MB VRAM, 4.0GB RAM │ 96% │
-│ gemma:2b   │ Gemma 2B - Google's     │ 1.6 GB │ 2500MB VRAM, 4.0GB RAM │ 96% │
-│ phi3:mini  │ Phi-3 Mini 3.8B -       │ 2.3 GB │ 3000MB VRAM, 4.0GB RAM │ 92% │
-│ llama3.2   │ Llama 3.2 3B - Meta's   │ 2.0 GB │ 3500MB VRAM, 6.0GB RAM │ 80% │
-│ tinyllama  │ TinyLlama 1.1B - Fast   │ 0.6 GB │ 1500MB VRAM, 2.0GB RAM │ 72% │
-└────────────┴─────────────────────────┴────────┴────────────────────────┴─────┘
-```
-
-### Install a Model
-
-```bash
-llm-manager install llama3.2
-```
-
-Pulls the specified model via Ollama with progress tracking.
-
-### List Installed Models
-
-```bash
+# List installed models
 llm-manager list
-```
 
-Shows all locally available models with size and details.
+# Benchmark raw performance (tokens/sec)
+llm-manager benchmark <model>
+llm-manager benchmark <model> --full
 
-### Benchmark a Model
+# Quantize a model
+llm-manager quantize <model>
+llm-manager quantize <model> --level q4_k_m
 
-```bash
-llm-manager benchmark llama3.2
-```
-
-Tests model performance and stores results in local database.
-
-```
-╭──────────────────────────╮
-│ Benchmarking: llama3.2   │
-╰──────────────────────────╯
-Running benchmark for llama3.2...
-✓ Benchmark saved to database
-
-           Benchmark Results           
-┏━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
-┃ Metric           ┃ Value             ┃
-┡━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
-│ Model            │ llama3.2          │
-│ Tokens/sec       │ 12.45             │
-│ Prompt eval rate │ 145.32 tok/s      │
-│ Total time       │ 5234ms            │
-│ Load time        │ 234ms             │
-│ Tokens generated │ 45                │
-│ Prompt tokens    │ 12                │
-└──────────────────┴───────────────────┘
-```
-
-### Quantize a Model
-
-```bash
-llm-manager quantize llama3.2
-```
-
-Creates a quantized version optimized for your hardware.
-
-```
-╭──────────────────────────╮
-│ Quantizing: llama3.2     │
-╰──────────────────────────╯
-Hardware: NVIDIA GeForce GTX 1050 Ti with 4096MB VRAM
-Recommended quantization: 4-bit (K-means medium) - best balance, 75% smaller
-✓ Quantized model created: llama3.2-q4_k_m
-```
-
-### View Benchmark History
-
-```bash
+# View benchmark history
 llm-manager history
 ```
 
-Shows your benchmark history with performance trends.
+---
 
-## Hardware Requirements
+## 📐 Evaluation Benchmarks
 
-The tool automatically detects your hardware and recommends suitable models:
+### TruthfulQA Subset (50 questions)
 
-| Hardware | Recommended Models |
-|----------|-------------------|
-| Low-end (4GB VRAM) | TinyLlama, Phi-3 Mini, Qwen2.5-3B |
-| Mid-range (8GB VRAM) | Llama 3.2, Mistral 7B, Gemma 2B |
-| High-end (16GB+ VRAM) | Llama 3.1 70B, Mixtral, CodeLlama |
+Tests model truthfulness — can it avoid common misconceptions, debunked health claims, and popular falsehoods?
 
-## Configuration
+**Categories:** Misconceptions · Health · Science · History
 
-The tool stores benchmark history in a local SQLite database at:
+### MMLU Subset (80 questions)
+
+Tests broad knowledge across academic disciplines via multiple-choice questions.
+
+**Groups:**
+
+| Group | Subjects | Questions |
+|-------|----------|-----------|
+| **STEM** | Computer Science, Physics, Chemistry, Biology, Mathematics, ML, Statistics | 30 |
+| **Humanities** | Philosophy, Logic, History, Law, Religion | 15 |
+| **Social Sciences** | Psychology, Sociology, Economics, Geography, Politics | 15 |
+| **Other** | Medicine, Nutrition, Business, Management, Global Facts | 20 |
+
+---
+
+## ⚙️ How It Works
+
+1. **Hardware Detection** — Queries `nvidia-smi`/`rocm-smi` for GPU info, `psutil`/`cpuinfo` for CPU/RAM
+2. **Evaluation** — Builds structured multiple-choice prompts, sends to Ollama, extracts answer letters via regex
+3. **Scoring** — Computes per-subject accuracy, latency percentiles (P50/P95), and throughput metrics
+4. **Comparison** — Calculates accuracy delta, latency speedup, and a quality-efficiency tradeoff score
+5. **Reports** — Generates standalone HTML with embedded CSS (dark theme, gradient bars, metrics cards)
+6. **Storage** — All results persist in a local SQLite database for trend tracking
+
+---
+
+## 🗃️ Data Storage
+
+Results are stored in a local SQLite database:
+
 ```
 ~/.local/share/local-llm-manager/benchmarks.db
 ```
 
-## Development
+Tables:
+- `benchmarks` — Raw performance benchmarks (tokens/sec, load time)
+- `eval_results` — Evaluation results (accuracy, per-subject scores, latency stats)
+
+---
+
+## 🛠️ Development
 
 ```bash
-# Clone the repository
 git clone https://github.com/arjun-arihant/local-llm-manager.git
 cd local-llm-manager
-
-# Install in development mode
 pip install -e .
 
-# Run tests
-pytest tests/
+# Verify installation
+llm-manager --help
 ```
 
-## License
+---
 
-MIT License - see [LICENSE](LICENSE) file for details.
+## 📄 License
 
-## Acknowledgments
+MIT License — see [LICENSE](LICENSE) for details.
 
-- [Ollama](https://ollama.com) for making local LLMs accessible
-- [Rich](https://rich.readthedocs.io) for beautiful terminal UI
+## 🙏 Acknowledgments
+
+- [Ollama](https://ollama.com) — making local LLMs accessible
+- [Rich](https://rich.readthedocs.io) — beautiful terminal UI
+- [TruthfulQA](https://github.com/sylinrl/TruthfulQA) — truthfulness benchmark
+- [MMLU](https://github.com/hendrycks/test) — massive multitask language understanding

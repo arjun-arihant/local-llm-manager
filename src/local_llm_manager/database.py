@@ -57,6 +57,26 @@ class BenchmarkDB:
                     hardware_info TEXT NOT NULL
                 )
             """)
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS eval_results (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    model_name TEXT NOT NULL,
+                    dataset_name TEXT NOT NULL,
+                    timestamp TEXT NOT NULL,
+                    accuracy REAL NOT NULL,
+                    correct_count INTEGER NOT NULL,
+                    total_questions INTEGER NOT NULL,
+                    per_subject_scores TEXT NOT NULL,
+                    per_group_scores TEXT NOT NULL,
+                    avg_latency_ms REAL NOT NULL,
+                    p50_latency_ms REAL NOT NULL,
+                    p95_latency_ms REAL NOT NULL,
+                    min_latency_ms REAL NOT NULL,
+                    max_latency_ms REAL NOT NULL,
+                    total_eval_time_s REAL NOT NULL,
+                    hardware_info TEXT NOT NULL
+                )
+            """)
             conn.commit()
     
     def save_benchmark(self, result: BenchmarkResult) -> int:
@@ -157,3 +177,94 @@ class BenchmarkDB:
             cursor = conn.execute("DELETE FROM benchmarks")
             conn.commit()
             return cursor.rowcount
+
+    # ------------------------------------------------------------------
+    # Eval Results
+    # ------------------------------------------------------------------
+
+    def save_eval_result(self, result) -> int:
+        """Save an EvalResult and return its ID."""
+        with sqlite3.connect(self.db_path) as conn:
+            cursor = conn.execute(
+                """
+                INSERT INTO eval_results
+                (model_name, dataset_name, timestamp, accuracy,
+                 correct_count, total_questions, per_subject_scores,
+                 per_group_scores, avg_latency_ms, p50_latency_ms,
+                 p95_latency_ms, min_latency_ms, max_latency_ms,
+                 total_eval_time_s, hardware_info)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    result.model_name,
+                    result.dataset_name,
+                    result.timestamp.isoformat(),
+                    result.accuracy,
+                    result.correct_count,
+                    result.total_questions,
+                    json.dumps(result.per_subject_accuracy),
+                    json.dumps(result.per_group_accuracy),
+                    result.avg_latency_ms,
+                    result.p50_latency_ms,
+                    result.p95_latency_ms,
+                    result.min_latency_ms,
+                    result.max_latency_ms,
+                    result.total_eval_time_s,
+                    json.dumps(result.hardware_info),
+                ),
+            )
+            conn.commit()
+            return cursor.lastrowid
+
+    def get_eval_results(
+        self,
+        model_name: Optional[str] = None,
+        dataset_name: Optional[str] = None,
+        limit: int = 50,
+    ) -> List[Dict[str, Any]]:
+        """Retrieve eval results with optional filters."""
+        query = "SELECT * FROM eval_results WHERE 1=1"
+        params: list = []
+        if model_name:
+            query += " AND model_name = ?"
+            params.append(model_name)
+        if dataset_name:
+            query += " AND dataset_name = ?"
+            params.append(dataset_name)
+        query += " ORDER BY timestamp DESC LIMIT ?"
+        params.append(limit)
+
+        with sqlite3.connect(self.db_path) as conn:
+            rows = conn.execute(query, params).fetchall()
+
+        results = []
+        for row in rows:
+            results.append({
+                "id": row[0],
+                "model_name": row[1],
+                "dataset_name": row[2],
+                "timestamp": row[3],
+                "accuracy": row[4],
+                "correct_count": row[5],
+                "total_questions": row[6],
+                "per_subject_scores": json.loads(row[7]),
+                "per_group_scores": json.loads(row[8]),
+                "avg_latency_ms": row[9],
+                "p50_latency_ms": row[10],
+                "p95_latency_ms": row[11],
+                "min_latency_ms": row[12],
+                "max_latency_ms": row[13],
+                "total_eval_time_s": row[14],
+                "hardware_info": json.loads(row[15]),
+            })
+        return results
+
+    def get_eval_comparison(
+        self, model_a: str, model_b: str, dataset_name: Optional[str] = None
+    ) -> Optional[Dict[str, Any]]:
+        """Get the latest eval results for two models for comparison."""
+        result_a = self.get_eval_results(model_name=model_a, dataset_name=dataset_name, limit=1)
+        result_b = self.get_eval_results(model_name=model_b, dataset_name=dataset_name, limit=1)
+        if not result_a or not result_b:
+            return None
+        return {"model_a": result_a[0], "model_b": result_b[0]}

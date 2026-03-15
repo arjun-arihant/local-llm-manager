@@ -4,15 +4,15 @@ build-backend = "hatchling.build"
 
 [project]
 name = "local-llm-manager"
-version = "0.1.0"
-description = "Intelligent hardware-aware tool for managing local LLMs"
+version = "0.2.0"
+description = "Hardware-aware LLM manager & evaluation harness with TruthfulQA/MMLU benchmarks"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 authors = [
     { name = "Arjun Arihant" }
 ]
-keywords = ["llm", "ollama", "local-ai", "gpu", "benchmark"]
+keywords = ["llm", "ollama", "local-ai", "gpu", "benchmark", "evaluation", "truthfulqa", "mmlu", "quantization"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",

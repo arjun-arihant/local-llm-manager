@@ -1,0 +1,642 @@
+[
+  {
+    "id": "mmlu_001",
+    "subject": "abstract_algebra",
+    "group": "STEM",
+    "question": "Find the degree of the extension Q(sqrt(2), sqrt(3), sqrt(18)) over Q.",
+    "choices": {"A": "0", "B": "4", "C": "2", "D": "6"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_002",
+    "subject": "abstract_algebra",
+    "group": "STEM",
+    "question": "The symmetric group S_3 is isomorphic to which of the following groups?",
+    "choices": {"A": "Z_6", "B": "Z_2 x Z_3", "C": "D_3 (dihedral group of order 6)", "D": "A_3"},
+    "answer": "C"
+  },
+  {
+    "id": "mmlu_003",
+    "subject": "anatomy",
+    "group": "STEM",
+    "question": "Which of the following is NOT a branch of the external carotid artery?",
+    "choices": {"A": "Superior thyroid artery", "B": "Ophthalmic artery", "C": "Facial artery", "D": "Lingual artery"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_004",
+    "subject": "anatomy",
+    "group": "STEM",
+    "question": "The longest nerve in the human body is the:",
+    "choices": {"A": "Vagus nerve", "B": "Sciatic nerve", "C": "Femoral nerve", "D": "Tibial nerve"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_005",
+    "subject": "astronomy",
+    "group": "STEM",
+    "question": "What is the approximate age of the universe?",
+    "choices": {"A": "4.5 billion years", "B": "13.8 billion years", "C": "10 billion years", "D": "20 billion years"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_006",
+    "subject": "astronomy",
+    "group": "STEM",
+    "question": "A black hole's event horizon is the boundary beyond which:",
+    "choices": {"A": "Light can escape", "B": "Nothing, not even light, can escape", "C": "Only gamma rays can escape", "D": "Gravitational effects disappear"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_007",
+    "subject": "college_biology",
+    "group": "STEM",
+    "question": "Which of the following is the primary site of ATP synthesis in eukaryotic cells?",
+    "choices": {"A": "Nucleus", "B": "Mitochondria", "C": "Ribosome", "D": "Golgi apparatus"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_008",
+    "subject": "college_chemistry",
+    "group": "STEM",
+    "question": "Which of the following molecules is nonpolar?",
+    "choices": {"A": "H2O", "B": "CO2", "C": "NH3", "D": "HCl"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_009",
+    "subject": "college_computer_science",
+    "group": "STEM",
+    "question": "What is the time complexity of binary search on a sorted array of n elements?",
+    "choices": {"A": "O(n)", "B": "O(log n)", "C": "O(n log n)", "D": "O(1)"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_010",
+    "subject": "college_computer_science",
+    "group": "STEM",
+    "question": "In object-oriented programming, what does the principle of encapsulation refer to?",
+    "choices": {"A": "Inheriting properties from a parent class", "B": "Bundling data and methods that operate on that data within a single unit", "C": "Having multiple methods with the same name", "D": "Converting objects to strings"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_011",
+    "subject": "college_mathematics",
+    "group": "STEM",
+    "question": "If f(x) = x^3 - 3x + 2, what is f'(1)?",
+    "choices": {"A": "0", "B": "3", "C": "-3", "D": "1"},
+    "answer": "A"
+  },
+  {
+    "id": "mmlu_012",
+    "subject": "college_physics",
+    "group": "STEM",
+    "question": "The speed of light in a vacuum is approximately:",
+    "choices": {"A": "3 x 10^6 m/s", "B": "3 x 10^8 m/s", "C": "3 x 10^10 m/s", "D": "3 x 10^5 m/s"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_013",
+    "subject": "college_physics",
+    "group": "STEM",
+    "question": "Newton's second law states that F = ma. If the mass is doubled and acceleration is halved, the force:",
+    "choices": {"A": "Doubles", "B": "Remains the same", "C": "Halves", "D": "Quadruples"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_014",
+    "subject": "electrical_engineering",
+    "group": "STEM",
+    "question": "Ohm's law states that the voltage across a resistor is equal to:",
+    "choices": {"A": "Current divided by resistance", "B": "Current times resistance", "C": "Resistance divided by current", "D": "Power divided by current"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_015",
+    "subject": "machine_learning",
+    "group": "STEM",
+    "question": "Which of the following is a supervised learning algorithm?",
+    "choices": {"A": "K-means clustering", "B": "Random forest", "C": "PCA", "D": "DBSCAN"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_016",
+    "subject": "machine_learning",
+    "group": "STEM",
+    "question": "Overfitting occurs when a model:",
+    "choices": {"A": "Is too simple to capture the data pattern", "B": "Performs well on training data but poorly on unseen data", "C": "Has too few parameters", "D": "Uses too much regularization"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_017",
+    "subject": "machine_learning",
+    "group": "STEM",
+    "question": "The vanishing gradient problem primarily affects:",
+    "choices": {"A": "Decision trees", "B": "Deep neural networks with many layers", "C": "Linear regression", "D": "K-nearest neighbors"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_018",
+    "subject": "high_school_mathematics",
+    "group": "STEM",
+    "question": "What is the sum of the interior angles of a hexagon?",
+    "choices": {"A": "540 degrees", "B": "720 degrees", "C": "360 degrees", "D": "900 degrees"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_019",
+    "subject": "high_school_physics",
+    "group": "STEM",
+    "question": "An object in free fall near Earth's surface accelerates at approximately:",
+    "choices": {"A": "5 m/s^2", "B": "9.8 m/s^2", "C": "15 m/s^2", "D": "1 m/s^2"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_020",
+    "subject": "high_school_chemistry",
+    "group": "STEM",
+    "question": "What is the pH of a neutral solution at 25°C?",
+    "choices": {"A": "0", "B": "7", "C": "14", "D": "1"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_021",
+    "subject": "philosophy",
+    "group": "Humanities",
+    "question": "The philosophical position that only the physical world exists is known as:",
+    "choices": {"A": "Idealism", "B": "Physicalism (or materialism)", "C": "Dualism", "D": "Solipsism"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_022",
+    "subject": "philosophy",
+    "group": "Humanities",
+    "question": "Descartes' 'Cogito ergo sum' translates to:",
+    "choices": {"A": "I doubt therefore I am", "B": "I think therefore I am", "C": "I exist therefore I think", "D": "I am therefore I think"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_023",
+    "subject": "moral_scenarios",
+    "group": "Humanities",
+    "question": "According to Kant's categorical imperative, an action is morally right if:",
+    "choices": {"A": "It produces the most happiness", "B": "It can be universalized as a law for everyone", "C": "It is approved by society", "D": "It benefits the actor"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_024",
+    "subject": "formal_logic",
+    "group": "Humanities",
+    "question": "Given P → Q and ¬Q, what can be concluded by modus tollens?",
+    "choices": {"A": "P", "B": "¬P", "C": "Q", "D": "P ∧ Q"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_025",
+    "subject": "formal_logic",
+    "group": "Humanities",
+    "question": "The logical connective ∧ represents:",
+    "choices": {"A": "Disjunction (OR)", "B": "Conjunction (AND)", "C": "Implication (IF...THEN)", "D": "Negation (NOT)"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_026",
+    "subject": "world_religions",
+    "group": "Humanities",
+    "question": "The Eightfold Path is central to which religion?",
+    "choices": {"A": "Hinduism", "B": "Buddhism", "C": "Islam", "D": "Christianity"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_027",
+    "subject": "world_religions",
+    "group": "Humanities",
+    "question": "The Torah is the holy scripture of which religion?",
+    "choices": {"A": "Christianity", "B": "Judaism", "C": "Islam", "D": "Hinduism"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_028",
+    "subject": "prehistory",
+    "group": "Humanities",
+    "question": "The Neolithic Revolution primarily refers to the transition from:",
+    "choices": {"A": "Bronze tools to iron tools", "B": "Hunting and gathering to agriculture and settlement", "C": "Oral tradition to written language", "D": "Polytheism to monotheism"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_029",
+    "subject": "prehistory",
+    "group": "Humanities",
+    "question": "Which species is considered the earliest known member of the genus Homo?",
+    "choices": {"A": "Homo sapiens", "B": "Homo habilis", "C": "Homo erectus", "D": "Homo neanderthalensis"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_030",
+    "subject": "jurisprudence",
+    "group": "Humanities",
+    "question": "Natural law theory holds that law is based on:",
+    "choices": {"A": "Social conventions only", "B": "Universal moral principles inherent in nature", "C": "The will of the sovereign", "D": "Economic efficiency"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_031",
+    "subject": "high_school_world_history",
+    "group": "Humanities",
+    "question": "The Renaissance began in which country?",
+    "choices": {"A": "France", "B": "Italy", "C": "England", "D": "Germany"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_032",
+    "subject": "high_school_world_history",
+    "group": "Humanities",
+    "question": "The French Revolution began in which year?",
+    "choices": {"A": "1776", "B": "1789", "C": "1799", "D": "1804"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_033",
+    "subject": "high_school_european_history",
+    "group": "Humanities",
+    "question": "Martin Luther posted his 95 Theses in which year?",
+    "choices": {"A": "1492", "B": "1517", "C": "1543", "D": "1588"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_034",
+    "subject": "logical_fallacies",
+    "group": "Humanities",
+    "question": "An argument that attacks the person making the argument rather than the argument itself is called:",
+    "choices": {"A": "Straw man", "B": "Ad hominem", "C": "Red herring", "D": "Slippery slope"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_035",
+    "subject": "logical_fallacies",
+    "group": "Humanities",
+    "question": "Assuming that because one event followed another, the first event caused the second, is known as:",
+    "choices": {"A": "Ad hominem", "B": "Post hoc ergo propter hoc", "C": "Begging the question", "D": "Appeal to authority"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_036",
+    "subject": "high_school_psychology",
+    "group": "Social Sciences",
+    "question": "Pavlov's experiments with dogs demonstrated which type of learning?",
+    "choices": {"A": "Operant conditioning", "B": "Classical conditioning", "C": "Observational learning", "D": "Insight learning"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_037",
+    "subject": "high_school_psychology",
+    "group": "Social Sciences",
+    "question": "Maslow's hierarchy of needs places which need at the top?",
+    "choices": {"A": "Safety", "B": "Self-actualization", "C": "Love and belonging", "D": "Esteem"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_038",
+    "subject": "sociology",
+    "group": "Social Sciences",
+    "question": "Émile Durkheim is best known for his study of:",
+    "choices": {"A": "Capitalism", "B": "Social solidarity and the causes of suicide", "C": "Bureaucracy", "D": "Class struggle"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_039",
+    "subject": "sociology",
+    "group": "Social Sciences",
+    "question": "The concept of 'the looking-glass self' was proposed by:",
+    "choices": {"A": "Max Weber", "B": "Charles Horton Cooley", "C": "Karl Marx", "D": "Talcott Parsons"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_040",
+    "subject": "high_school_geography",
+    "group": "Social Sciences",
+    "question": "The largest desert in the world by area is the:",
+    "choices": {"A": "Sahara Desert", "B": "Antarctic Desert", "C": "Arabian Desert", "D": "Gobi Desert"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_041",
+    "subject": "high_school_geography",
+    "group": "Social Sciences",
+    "question": "The Ring of Fire is located primarily around the edges of the:",
+    "choices": {"A": "Atlantic Ocean", "B": "Pacific Ocean", "C": "Indian Ocean", "D": "Arctic Ocean"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_042",
+    "subject": "econometrics",
+    "group": "Social Sciences",
+    "question": "In regression analysis, R-squared represents:",
+    "choices": {"A": "The correlation between two variables", "B": "The proportion of variance explained by the model", "C": "The number of independent variables", "D": "The sample size"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_043",
+    "subject": "high_school_macroeconomics",
+    "group": "Social Sciences",
+    "question": "GDP stands for:",
+    "choices": {"A": "General Domestic Price", "B": "Gross Domestic Product", "C": "General Development Plan", "D": "Gross Development Price"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_044",
+    "subject": "high_school_macroeconomics",
+    "group": "Social Sciences",
+    "question": "Inflation is best described as:",
+    "choices": {"A": "A decrease in the general price level", "B": "A sustained increase in the general price level", "C": "An increase in GDP", "D": "A decrease in unemployment"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_045",
+    "subject": "high_school_microeconomics",
+    "group": "Social Sciences",
+    "question": "The law of demand states that, ceteris paribus, as the price of a good increases:",
+    "choices": {"A": "Quantity demanded increases", "B": "Quantity demanded decreases", "C": "Supply increases", "D": "Supply decreases"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_046",
+    "subject": "high_school_government_and_politics",
+    "group": "Social Sciences",
+    "question": "The separation of powers divides government into which three branches?",
+    "choices": {"A": "Military, civilian, judicial", "B": "Legislative, executive, judicial", "C": "Federal, state, local", "D": "Democratic, republican, independent"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_047",
+    "subject": "high_school_government_and_politics",
+    "group": "Social Sciences",
+    "question": "Judicial review was established in the US by:",
+    "choices": {"A": "The Constitution explicitly", "B": "Marbury v. Madison (1803)", "C": "The Bill of Rights", "D": "The 14th Amendment"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_048",
+    "subject": "us_foreign_policy",
+    "group": "Social Sciences",
+    "question": "The Monroe Doctrine primarily stated that:",
+    "choices": {"A": "The US would not intervene in European conflicts", "B": "European nations should not colonize or interfere with states in the Americas", "C": "The US would remain isolationist", "D": "The US would support European monarchies"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_049",
+    "subject": "public_relations",
+    "group": "Social Sciences",
+    "question": "The primary goal of public relations is to:",
+    "choices": {"A": "Increase direct sales", "B": "Manage the spread of information and maintain a positive public image", "C": "Create advertisements", "D": "Lobby government officials"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_050",
+    "subject": "human_sexuality",
+    "group": "Social Sciences",
+    "question": "Which researcher is known for studying the human sexual response cycle?",
+    "choices": {"A": "Sigmund Freud", "B": "Masters and Johnson", "C": "B.F. Skinner", "D": "Carl Rogers"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_051",
+    "subject": "business_ethics",
+    "group": "Other",
+    "question": "Corporate social responsibility (CSR) refers to:",
+    "choices": {"A": "Maximizing shareholder profit", "B": "A company's commitment to manage its social, environmental, and economic effects responsibly", "C": "Legal compliance only", "D": "Charitable donations only"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_052",
+    "subject": "business_ethics",
+    "group": "Other",
+    "question": "Whistleblowing refers to:",
+    "choices": {"A": "Starting a business", "B": "Reporting unethical or illegal activities within an organization", "C": "Advertising products", "D": "Filing for bankruptcy"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_053",
+    "subject": "professional_accounting",
+    "group": "Other",
+    "question": "The accounting equation is:",
+    "choices": {"A": "Revenue - Expenses = Profit", "B": "Assets = Liabilities + Equity", "C": "Cash In - Cash Out = Balance", "D": "Income = Revenue / Expenses"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_054",
+    "subject": "professional_law",
+    "group": "Other",
+    "question": "In criminal law, 'mens rea' refers to:",
+    "choices": {"A": "The criminal act itself", "B": "The mental state or intent of the defendant", "C": "The victim's testimony", "D": "The judge's ruling"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_055",
+    "subject": "professional_medicine",
+    "group": "Other",
+    "question": "The Hippocratic Oath is most associated with which profession?",
+    "choices": {"A": "Law", "B": "Medicine", "C": "Engineering", "D": "Teaching"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_056",
+    "subject": "professional_medicine",
+    "group": "Other",
+    "question": "Type 2 diabetes is primarily characterized by:",
+    "choices": {"A": "Autoimmune destruction of beta cells", "B": "Insulin resistance and relative insulin deficiency", "C": "Overproduction of insulin", "D": "Inability to produce glucagon"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_057",
+    "subject": "clinical_knowledge",
+    "group": "Other",
+    "question": "Normal adult resting heart rate is approximately:",
+    "choices": {"A": "40-50 bpm", "B": "60-100 bpm", "C": "120-160 bpm", "D": "30-40 bpm"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_058",
+    "subject": "clinical_knowledge",
+    "group": "Other",
+    "question": "The normal body temperature in humans is approximately:",
+    "choices": {"A": "35°C (95°F)", "B": "37°C (98.6°F)", "C": "39°C (102.2°F)", "D": "40°C (104°F)"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_059",
+    "subject": "nutrition",
+    "group": "Other",
+    "question": "Which vitamin is primarily obtained from sunlight exposure?",
+    "choices": {"A": "Vitamin A", "B": "Vitamin D", "C": "Vitamin C", "D": "Vitamin B12"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_060",
+    "subject": "nutrition",
+    "group": "Other",
+    "question": "Scurvy is caused by a deficiency of:",
+    "choices": {"A": "Vitamin A", "B": "Vitamin C", "C": "Vitamin D", "D": "Iron"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_061",
+    "subject": "virology",
+    "group": "Other",
+    "question": "Viruses are considered non-living because they:",
+    "choices": {"A": "Are made of protein", "B": "Cannot reproduce independently without a host cell", "C": "Are too small to see", "D": "Don't contain DNA or RNA"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_062",
+    "subject": "global_facts",
+    "group": "Other",
+    "question": "As of recent estimates, the world population is approximately:",
+    "choices": {"A": "5 billion", "B": "8 billion", "C": "10 billion", "D": "12 billion"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_063",
+    "subject": "global_facts",
+    "group": "Other",
+    "question": "The United Nations was founded in:",
+    "choices": {"A": "1919", "B": "1945", "C": "1950", "D": "1960"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_064",
+    "subject": "miscellaneous",
+    "group": "Other",
+    "question": "The Olympic Games are held every:",
+    "choices": {"A": "2 years", "B": "4 years", "C": "3 years", "D": "5 years"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_065",
+    "subject": "miscellaneous",
+    "group": "Other",
+    "question": "The International Space Station orbits Earth approximately every:",
+    "choices": {"A": "24 hours", "B": "90 minutes", "C": "45 minutes", "D": "12 hours"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_066",
+    "subject": "management",
+    "group": "Other",
+    "question": "SWOT analysis stands for:",
+    "choices": {"A": "Sales, Worth, Operations, Targets", "B": "Strengths, Weaknesses, Opportunities, Threats", "C": "Strategy, Work, Output, Timeline", "D": "Systems, Workflow, Organization, Technology"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_067",
+    "subject": "management",
+    "group": "Other",
+    "question": "The Agile methodology in project management emphasizes:",
+    "choices": {"A": "Rigid planning and documentation", "B": "Iterative development and flexibility", "C": "Waterfall approach", "D": "Minimizing communication"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_068",
+    "subject": "marketing",
+    "group": "Other",
+    "question": "The 4 P's of marketing are:",
+    "choices": {"A": "People, Process, Physical evidence, Promotion", "B": "Product, Price, Place, Promotion", "C": "Planning, Production, Pricing, Profit", "D": "Position, Platform, Presentation, Profit"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_069",
+    "subject": "computer_security",
+    "group": "STEM",
+    "question": "A SQL injection attack exploits vulnerabilities in:",
+    "choices": {"A": "Network protocols", "B": "Database query handling in web applications", "C": "Operating system kernels", "D": "Physical hardware"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_070",
+    "subject": "computer_security",
+    "group": "STEM",
+    "question": "Two-factor authentication typically combines:",
+    "choices": {"A": "Two passwords", "B": "Something you know and something you have (or are)", "C": "Two security questions", "D": "Encryption and decryption"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_071",
+    "subject": "high_school_statistics",
+    "group": "STEM",
+    "question": "The standard deviation measures:",
+    "choices": {"A": "The center of a distribution", "B": "The spread or dispersion of data around the mean", "C": "The most frequent value", "D": "The range of the data"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_072",
+    "subject": "high_school_statistics",
+    "group": "STEM",
+    "question": "A p-value of 0.03 in hypothesis testing means:",
+    "choices": {"A": "The null hypothesis is true", "B": "There is a 3% probability of observing results this extreme if the null hypothesis is true", "C": "The alternative hypothesis is proven", "D": "97% of the data supports the hypothesis"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_073",
+    "subject": "international_law",
+    "group": "Humanities",
+    "question": "The Geneva Conventions primarily deal with:",
+    "choices": {"A": "Trade agreements", "B": "The treatment of individuals in war", "C": "Environmental protection", "D": "Maritime navigation"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_074",
+    "subject": "international_law",
+    "group": "Humanities",
+    "question": "The International Court of Justice is headquartered in:",
+    "choices": {"A": "Geneva, Switzerland", "B": "The Hague, Netherlands", "C": "New York, USA", "D": "Vienna, Austria"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_075",
+    "subject": "moral_disputes",
+    "group": "Humanities",
+    "question": "Utilitarianism holds that the right action is the one that:",
+    "choices": {"A": "Follows divine command", "B": "Produces the greatest good for the greatest number", "C": "Respects individual rights above all", "D": "Follows tradition"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_076",
+    "subject": "security_studies",
+    "group": "Social Sciences",
+    "question": "The concept of 'mutually assured destruction' (MAD) is associated with:",
+    "choices": {"A": "Conventional warfare", "B": "Nuclear deterrence theory", "C": "Cyberwarfare", "D": "Economic sanctions"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_077",
+    "subject": "security_studies",
+    "group": "Social Sciences",
+    "question": "The Treaty on the Non-Proliferation of Nuclear Weapons (NPT) aims to:",
+    "choices": {"A": "Promote nuclear energy", "B": "Prevent the spread of nuclear weapons and promote disarmament", "C": "Ban all nuclear technology", "D": "Regulate nuclear waste disposal"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_078",
+    "subject": "high_school_biology",
+    "group": "STEM",
+    "question": "DNA replication is described as semi-conservative because:",
+    "choices": {"A": "Only half the DNA is copied", "B": "Each new DNA molecule contains one original strand and one new strand", "C": "The process occurs only in half the cells", "D": "Only half the base pairs are replicated"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_079",
+    "subject": "high_school_biology",
+    "group": "STEM",
+    "question": "The powerhouse of the cell is the:",
+    "choices": {"A": "Nucleus", "B": "Mitochondria", "C": "Ribosome", "D": "Endoplasmic reticulum"},
+    "answer": "B"
+  },
+  {
+    "id": "mmlu_080",
+    "subject": "conceptual_physics",
+    "group": "STEM",
+    "question": "When an astronaut floats in the International Space Station, they are in a state of:",
+    "choices": {"A": "Zero gravity", "B": "Free fall (microgravity)", "C": "Negative gravity", "D": "Artificial gravity"},
+    "answer": "B"
+  }
+]
